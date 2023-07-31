@@ -21,9 +21,7 @@ abstract class ItemDataBase : RoomDatabase() {
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    ItemDataBase::class.java,
-                    "item_database"
+                    context.applicationContext, ItemDataBase::class.java, "item_database"
                 ).build()
 
                 INSTANCE = instance
