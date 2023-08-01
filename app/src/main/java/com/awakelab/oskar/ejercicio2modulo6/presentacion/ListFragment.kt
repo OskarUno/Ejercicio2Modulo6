@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.awakelab.oskar.ejercicio1modulo6room.R
+import com.awakelab.oskar.ejercicio1modulo6room.databinding.FragmentListtBinding
 
 /* Pasos para crear un recycler view
 [ ] item layout
@@ -31,7 +33,9 @@ import com.awakelab.oskar.ejercicio1modulo6room.R
 */
 
 class ListFragment : Fragment() {
-
+    lateinit var binding: FragmentListtBinding
+    val itemViewModel: ItemViewModel by activityViewModels()
+    val adapter = ItemAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -40,8 +44,16 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        binding = FragmentListtBinding.inflate(inflater, container, false)
+        initLista()
+        return binding.root
+    }
 
-        return inflater.inflate(R.layout.fragment_listt, container, false)
+    private fun initLista() {
+        itemViewModel.getAllItems().observe(viewLifecycleOwner) {
+        adapter.setData(it)
+        }
+        binding.rv.adapter = adapter
     }
 
 }

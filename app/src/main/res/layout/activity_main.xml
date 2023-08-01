@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B17861"
+    android:background="#0F2550"
     tools:context="com.awakelab.oskar.ejercicio2modulo6.MainActivity">
 
     <TextView
@@ -21,8 +21,12 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/by"
         app:layout_constraintEnd_toEndOf="parent"

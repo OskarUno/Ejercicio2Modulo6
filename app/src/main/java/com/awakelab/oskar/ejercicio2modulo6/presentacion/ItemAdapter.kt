@@ -30,10 +30,15 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     lateinit var binding: ItemBinding
     private val listItem = mutableListOf<Item>()
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         binding = ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemViewHolder(binding)
+    }
+
+    fun setData( listaItem: List<Item>){
+        this.listItem.clear()
+        this.listItem.addAll(listaItem)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
