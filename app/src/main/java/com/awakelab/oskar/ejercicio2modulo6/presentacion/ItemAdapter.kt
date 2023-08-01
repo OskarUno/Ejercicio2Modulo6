@@ -1,5 +1,6 @@
 package com.awakelab.oskar.ejercicio2modulo6.presentacion
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,7 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         return ItemViewHolder(binding)
     }
 
-    fun setData( listaItem: List<Item>){
+    fun setData(listaItem: List<Item>) {
         this.listItem.clear()
         this.listItem.addAll(listaItem)
         notifyDataSetChanged()
@@ -51,11 +52,12 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     }
 
     class ItemViewHolder(val v: ItemBinding) : RecyclerView.ViewHolder(v.root) {
+        @SuppressLint("SetTextI18n")
         fun render(item: Item) {
             v.tvNombre.text = item.nombre
-            v.tvPrecio.text = item.precio.toString()
-            v.tvCantidad.text = item.cantidad.toString()
-            v.tvTotal.text = (item.precio * item.cantidad).toString()
+            v.tvPrecio.text = "$ " + item.precio.toString()
+            v.tvCantidad.text = "Un. " + item.cantidad.toString()
+            v.tvTotal.text = "$ " + (item.precio * item.cantidad).toString()
         }
     }
 }
