@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.awakelab.oskar.ejercicio1modulo6room.R
 import com.awakelab.oskar.ejercicio1modulo6room.databinding.FragmentListtBinding
 
@@ -46,7 +47,15 @@ class ListFragment : Fragment() {
     ): View? {
         binding = FragmentListtBinding.inflate(inflater, container, false)
         initLista()
+        initListener()
         return binding.root
+    }
+
+    private fun initListener() {
+        binding.floatingActionButton4.setOnClickListener {
+            findNavController().navigate(R.id.action_listFragment_to_addFragment)
+        }
+
     }
 
     private fun initLista() {
