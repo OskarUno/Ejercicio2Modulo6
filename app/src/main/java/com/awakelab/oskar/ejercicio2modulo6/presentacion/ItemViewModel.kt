@@ -23,4 +23,8 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
         val item = Item(name, price, quantity)
         repository.insertItem(item)
     }
+
+    fun obtenerTotal(precio:Int, cantidad:Int){
+
+    }
 }
