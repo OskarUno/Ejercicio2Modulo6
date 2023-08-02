@@ -1,6 +1,8 @@
 package com.awakelab.oskar.ejercicio2modulo6.presentacion
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +27,7 @@ class AddFragment : Fragment() {
     }
 
     private fun initListener() {
+
         binding.btnGuardar.setOnClickListener {
             val nombre = binding.editTextNombre.text.toString()
             val precio = binding.editTextPrecio.text.toString().toInt()
@@ -33,5 +36,20 @@ class AddFragment : Fragment() {
             Toast.makeText(context, "Producto Agregado", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
         }
+
+        binding.editTextCantidad.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (s.isNotEmpty()) {
+                    val total =
+                        s.toString().toInt() * binding.editTextPrecio.text.toString().toInt()
+                    binding.txtResultado.text = total.toString()
+                } else {
+                    binding.txtResultado.text = ""
+                }
+            }
+        })
     }
 }

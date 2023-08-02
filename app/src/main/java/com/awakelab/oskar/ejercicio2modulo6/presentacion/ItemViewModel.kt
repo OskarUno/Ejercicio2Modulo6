@@ -24,7 +24,4 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
         repository.insertItem(item)
     }
 
-    fun obtenerTotal(precio:Int, cantidad:Int){
-
-    }
 }
